@@ -21,9 +21,38 @@ export function drawReceipt(p) {
   p.textSize(19);
   p.text("YOURFIYAN", w - margin, 36);
 
+  p.textSize(9);
+  p.textStyle(p.NORMAL);
+  p.text("GENERATIVE PORTRAIT • #" + receipt.seed, w - margin, 52);
+
   p.stroke(0);
   p.strokeWeight(2);
   p.line(margin, 74, w - margin, 74);
+
+  // bottom scale
+  p.stroke(0);
+  p.strokeWeight(2);
+  p.line(margin, 525, w - margin, 525);
+
+  p.strokeWeight(1);
+  for (let x = margin; x <= w - margin; x += 6) {
+    const isMajor = (x - margin) % 30 === 0;
+    const tickH = isMajor ? 6 : 3;
+    p.line(x, 525, x, 525 + tickH);
+  }
+
+  // footer text
+  p.noStroke();
+  p.fill(0);
+  p.textAlign(p.LEFT, p.BOTTOM);
+  p.textFont("monospace");
+  p.textSize(10);
+  p.textStyle(p.BOLD);
+  p.text("HACK CLUB • 2026", margin, 568);
+
+  p.textAlign(p.RIGHT, p.BOTTOM);
+  p.textStyle(p.NORMAL);
+  p.text("PROFILE // YOURFIYAN", w - margin, 568);
 }
 
 function drawHackClubFlag(p, x, y, width, height) {
